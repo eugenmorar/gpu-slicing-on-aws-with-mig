@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-gpu-pod
+spec:
+  containers:
+  - name: gpu-example
+    image: nvidia/cuda
+    resources:
+      limits: 
+        nvidia.com/mig-1g.5gb: 1 # 1 slice 5GB of A100
+  nodeSelector:
+    nvidia.com/gpu.product: A100-PCIE-40GB
+    nvidia.com/cuda.runtime: 11.4
+    nvidia.com/cuda.driver: 470.161.03 
+
+# nvidia.com/mig-1g.5gb: 1 (1 slices of 5GB from A100)
+# nvidia.com/mig-1g.5gb: 2 (2 slices of 5GB from A100)
+# nvidia.com/mig-2g.10gb: 1 (1 slice of 10GB from A100)
+# nvidia.com/mig-2g.10gb: 3 (3 slices of 10GB from A100)
+# nvidia.com/mig-3g.20gb: 2 (2 slices of 20GB from A100)
+

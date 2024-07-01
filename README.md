@@ -5,9 +5,10 @@ To run workloads that use gpu fractions on our eks cluster we need to choose the
 
 We have two options:
 
-A. Use a new managed node group in EKS running exclusively P4d because is dedicated and all the compute is going to ML.
-B. Use the actual EKS cluster running Karpenter to autoscale to any type of workloads spawning P4d instances when ML workloads need to be scheduled. 
-
+```
+1. Use a new managed node group in EKS running exclusively P4d because is dedicated and all the compute is going to ML.
+2. Use the actual EKS cluster running Karpenter to autoscale to any type of workloads spawning P4d instances when ML workloads need to be scheduled. 
+```
 For workloads to use gpu slicing we need to create limits and selectors.
 
 ```
